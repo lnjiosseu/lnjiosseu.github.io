@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ludovic Njiosseu — Data Scientist & Statistician</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --accent: #c0392b;
+    --accent-dark: #96281b;
+    --muted: #7a7265;
+    --rule: #cec9bc;
+    --card-bg: #faf7f2;
+    --tag-bg: #e8e2d6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav { display: flex; gap: 2rem; align-items: center; }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent) !important; color: var(--paper) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 38ch;
+    line-height: 1.8;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: flex-end;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+
+  .stat-cell {
+    background: var(--card-bg);
+    padding: 1.5rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-outline {
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+  }
+
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    padding: 3rem clamp(1.5rem, 5vw, 5rem) 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-header .count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    padding: 0 clamp(1.5rem, 5vw, 5rem) 2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1.5px solid var(--rule);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ── PROJECT GRID ── */
+  .projects-grid {
+    padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5px;
+    background: var(--rule);
+  }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.35s ease;
+  }
+
+  .project-card:hover { background: #fefcf8; }
+  .project-card:hover::after { width: 100%; }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-domain {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-domain::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .card-index {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--rule);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .card-highlights {
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .highlight {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .highlight::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--tag-bg);
+    color: var(--muted);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .github-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: all 0.2s;
+  }
+
+  .github-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .github-link svg { width: 14px; height: 14px; }
+
+  /* ── ABOUT STRIP ── */
+  .about {
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-label {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .about-body { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .about p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .about p strong { color: var(--ink); font-weight: 500; }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .expertise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .expertise-item::before {
+    content: '·';
+    color: var(--accent);
+    font-size: 1rem;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-left h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-left p {
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.6s ease both; }
+  .project-card { animation: fadeUp 0.5s ease both; }
+  .project-card:nth-child(2) { animation-delay: 0.05s; }
+  .project-card:nth-child(3) { animation-delay: 0.10s; }
+  .project-card:nth-child(4) { animation-delay: 0.15s; }
+  .project-card:nth-child(5) { animation-delay: 0.20s; }
+  .project-card:nth-child(6) { animation-delay: 0.25s; }
+
+  .project-card.hidden { display: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .contact { flex-direction: column; }
+    nav { gap: 1rem; }
+    .nav-cta { display: none; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">Ludovic Njiosseu</a>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:lnjiosseu@gmail.com" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Data Scientist & Statistician</div>
+    <h1>Rigorous analytics,<br><em>built from<br>first principles.</em></h1>
+    <p class="hero-desc">MS Biostatistics, NYU · 5+ years across healthcare, pharma, financial analytics, and consumer products. Building production-grade statistical pipelines end-to-end in R.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-label">Portfolio Projects</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">0<span>.94</span></div>
+        <div class="stat-label">Ensemble AUC-ROC</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">8<span>k</span></div>
+        <div class="stat-label">Patient Cohort Scale</div>
+      </div>
+    </div>
+    <div class="hero-links">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="https://www.linkedin.com/in/lnjiosseu/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/lnjiosseu" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <h2>Selected Work</h2>
+    <span class="count">6 Projects</span>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="healthcare">Healthcare &amp; RWE</button>
+    <button class="filter-btn" data-filter="risk">Risk &amp; Finance</button>
+    <button class="filter-btn" data-filter="product">Product Analytics</button>
+    <button class="filter-btn" data-filter="policy">Policy &amp; Economics</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- ClinicalRWE -->
+    <div class="project-card" data-domain="healthcare">
+      <div class="card-meta">
+        <span class="card-domain">Healthcare RWE</span>
+        <span class="card-index">01 / 06</span>
+      </div>
+      <div class="card-title">ClinicalRWE: Oncology Survival & Causal Inference</div>
+      <div class="card-desc">End-to-end pharmaceutical RWE pipeline on 8,000 simulated oncology patients. Covers HEOR disparities, Kaplan-Meier/Cox PH survival, IPTW/AIPW causal inference, MICE imputation, competing risks, and biomarker subgroup analysis.</div>
+      <div class="card-highlights">
+        <div class="highlight">IPTW + doubly robust AIPW with E-value sensitivity</div>
+        <div class="highlight">Fine-Gray competing risks regression via cmprsk</div>
+        <div class="highlight">8-tab Shiny dashboard · ICH E9(R1) aligned</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Survival</span>
+        <span class="tag">Cox PH</span>
+        <span class="tag">IPTW</span>
+        <span class="tag">AIPW</span>
+        <span class="tag">MICE</span>
+        <span class="tag">cmprsk</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/clinicalrwe" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- PubHealthEpi -->
+    <div class="project-card" data-domain="healthcare">
+      <div class="card-meta">
+        <span class="card-domain">Public Health</span>
+        <span class="card-index">02 / 06</span>
+      </div>
+      <div class="card-title">PubHealthEpi: Health Disparities & Causal Inference</div>
+      <div class="card-desc">Longitudinal epidemiology pipeline on 8,000 patients studying community health worker interventions. Covers claims-based disparity analysis, KM/Cox survival modeling, propensity score methods, and doubly robust ATE estimation.</div>
+      <div class="card-highlights">
+        <div class="highlight">Stabilized IPTW with 99th-percentile trimming</div>
+        <div class="highlight">AIPW doubly robust estimator + E-value = 1.52</div>
+        <div class="highlight">All covariates |SMD| &lt; 0.10 post-weighting</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Epidemiology</span>
+        <span class="tag">IPTW</span>
+        <span class="tag">Cox PH</span>
+        <span class="tag">Disparities</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/pubhealth" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- StatEval -->
+    <div class="project-card" data-domain="healthcare">
+      <div class="card-meta">
+        <span class="card-domain">LLM Evaluation</span>
+        <span class="card-index">03 / 06</span>
+      </div>
+      <div class="card-title">StatEval: Rigorous LLM Evaluation in Clinical Q&A</div>
+      <div class="card-desc">Statistical evaluation design applied to AI quality assessment. Six-rubric framework with AI grader deployment, inter-rater reliability (ICC, Krippendorff's α), Neyman optimal sampling allocation, and causal inference on user satisfaction.</div>
+      <div class="card-highlights">
+        <div class="highlight">ICC range: 0.886–0.953 across all rubrics</div>
+        <div class="highlight">AIPW ATE +0.38 pts (E-value 3.14)</div>
+        <div class="highlight">Neyman allocation: 100 samples across 15 strata</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Eval Design</span>
+        <span class="tag">ICC / IRR</span>
+        <span class="tag">AIPW</span>
+        <span class="tag">Power Analysis</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/stateval" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- FraudDetect -->
+    <div class="project-card" data-domain="risk">
+      <div class="card-meta">
+        <span class="card-domain">Risk Analytics</span>
+        <span class="card-index">04 / 06</span>
+      </div>
+      <div class="card-title">FraudDetect: Financial Transaction Fraud Detection</div>
+      <div class="card-desc">Production-grade fraud detection pipeline replicating financial services workflows. Ensemble modeling (logistic regression + bagged stumps), SMOTE oversampling, Youden's J threshold optimization, isolation forest anomaly scoring, and risk segmentation.</div>
+      <div class="card-highlights">
+        <div class="highlight">Ensemble AUC-ROC ~0.94</div>
+        <div class="highlight">~31% FP rate reduction vs. rule-based baseline</div>
+        <div class="highlight">Isolation forest proxy built in pure base R</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Fraud</span>
+        <span class="tag">Ensemble</span>
+        <span class="tag">SMOTE</span>
+        <span class="tag">Anomaly</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/frauddetect" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- RetentionAnalytics -->
+    <div class="project-card" data-domain="product">
+      <div class="card-meta">
+        <span class="card-domain">Product Analytics</span>
+        <span class="card-index">05 / 06</span>
+      </div>
+      <div class="card-title">RetentionAnalytics: User Retention & Funnel Analytics</div>
+      <div class="card-desc">Consumer product analytics pipeline covering conversion funnel analysis, cohort retention modeling, DAU/MAU stickiness tracking, power-user identification via logistic regression, and a rigorous A/B experimentation framework with novelty-effect correction.</div>
+      <div class="card-highlights">
+        <div class="highlight">Retention prediction AUC-ROC ~0.81</div>
+        <div class="highlight">A/B experiment: +5pp M1 retention (significant)</div>
+        <div class="highlight">Power user M6 retention premium: ~18pp</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Retention</span>
+        <span class="tag">Cohort</span>
+        <span class="tag">DAU/MAU</span>
+        <span class="tag">A/B Testing</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/retentionanalytics" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- TradeComps -->
+    <div class="project-card" data-domain="policy">
+      <div class="card-meta">
+        <span class="card-domain">Policy Economics</span>
+        <span class="card-index">06 / 06</span>
+      </div>
+      <div class="card-title">TradeComps: Trade Competitiveness in Sub-Saharan Africa</div>
+      <div class="card-desc">Policy-oriented analysis of export competitiveness and FDI dynamics across 12 Sub-Saharan African economies, motivated by AfCFTA implementation. Applies RCA, HHI, composite investment attractiveness scoring, and OLS FDI determinants regression.</div>
+      <div class="card-highlights">
+        <div class="highlight">Composite RCA + CAGR + diversification index</div>
+        <div class="highlight">OLS: regulatory environment is strongest FDI driver</div>
+        <div class="highlight">5-tab Shiny dashboard · 12 countries × 9 years</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">RCA</span>
+        <span class="tag">FDI</span>
+        <span class="tag">HHI</span>
+        <span class="tag">AfCFTA</span>
+        <span class="tag">OLS</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/tradecomps" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-label">About<br>the work.</div>
+  <div class="about-body">
+    <p><strong>Ludovic Njiosseu</strong> holds an MS in Biostatistics from NYU with 5+ years of experience spanning healthcare, pharma, financial analytics, and consumer products. Every project here is built end-to-end in R without leaning on black-box AutoML — demonstrating the statistical reasoning and engineering discipline required for regulatory-grade work.</p>
+    <p>Prior experience includes <strong>Pfizer RWE (2021–2023)</strong> — end-to-end RWE study design, patient-level EHR/claims analysis, and causal inference across multiple therapeutic areas — and <strong>FDNY/Montefiore (2025–2026)</strong> — survival analysis, IPTW pipelines, and longitudinal cohort analytics under ICH E9(R1).</p>
+    <p>Open to roles in: <strong>risk analytics, RWE/HEOR, product data science, applied ML, and public health.</strong></p>
+    <div class="expertise-grid">
+      <div class="expertise-item">Causal Inference (IPTW, AIPW, E-value)</div>
+      <div class="expertise-item">Survival Analysis (Cox PH, Fine-Gray)</div>
+      <div class="expertise-item">Fraud Detection & Risk Modeling</div>
+      <div class="expertise-item">A/B Testing & Experimentation</div>
+      <div class="expertise-item">Multiple Imputation (MICE)</div>
+      <div class="expertise-item">Shiny Dashboard Development</div>
+      <div class="expertise-item">Ensemble ML & Threshold Calibration</div>
+      <div class="expertise-item">Quarto Reproducible Reporting</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-left">
+    <h3>Open to new opportunities.</h3>
+    <p>Reach out via email or LinkedIn — always happy to connect.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:lnjiosseu@gmail.com" class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      lnjiosseu@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/lnjiosseu/" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+    <a href="https://github.com/lnjiosseu" target="_blank" class="btn btn-outline">GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Ludovic Njiosseu · MS Biostatistics, NYU</p>
+  <p>Built with HTML · Hosted on GitHub Pages</p>
+</footer>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+
+  const domainMap = {
+    'healthcare': ['healthcare'],
+    'risk': ['risk'],
+    'product': ['product'],
+    'policy': ['policy'],
+  };
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const domain = card.dataset.domain;
+          if (domain === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
