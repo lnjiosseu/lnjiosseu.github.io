@@ -571,7 +571,7 @@
   <div class="hero-right">
     <div class="hero-stats">
       <div class="stat-cell">
-        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-num">7<span>+</span></div>
         <div class="stat-label">Portfolio Projects</div>
       </div>
       <div class="stat-cell">
@@ -599,7 +599,7 @@
 <section id="projects">
   <div class="section-header">
     <h2>Selected Work</h2>
-    <span class="count">6 Projects</span>
+    <span class="count">7 Projects</span>
   </div>
 
   <div class="filter-bar">
@@ -610,13 +610,15 @@
     <button class="filter-btn" data-filter="policy">Policy &amp; Economics</button>
   </div>
 
+  
   <div class="projects-grid">
 
     <!-- 01 ClinicalRWE -->
+
     <div class="project-card" data-domain="healthcare">
       <div class="card-meta">
         <span class="card-domain">Healthcare RWE</span>
-        <span class="card-index">01 / 06</span>
+        <span class="card-index">01 / 07</span>
       </div>
       <div class="card-title">ClinicalRWE: Oncology Real-World Evidence Study</div>
       <div class="card-desc">FDA-aligned oncology RWE pipeline on an 8,000-patient longitudinal cohort — built to pharma regulatory standards. Covers Kaplan-Meier/Cox PH survival, IPTW/AIPW causal inference, MICE multiple imputation, Fine-Gray competing risks, and biomarker-by-treatment interaction analyses per ICH E9(R1).</div>
@@ -650,11 +652,89 @@
       </div>
     </div>
 
-    <!-- 02 RetentionAnalytics -->
+    <!-- 02 HC Analytics -->
+    <div class="project-card" data-domain="product">
+      <div class="card-meta">
+        <span class="card-domain">Commercial Analytics</span>
+        <span class="card-index">02 / 07</span>
+      </div>
+      <div class="card-title">HC Analytics: Commercial Analytics Dashboard Suite</div>
+      <div class="card-desc">Enterprise-style commercial analytics environment built in R/Shiny to simulate CRM reporting, KPI governance, reporting automation, quota attainment tracking, and executive dashboard workflows.</div>
+      <div class="card-highlights">
+        <div class="highlight">Executive KPI dashboard suite with quota attainment and funnel analytics</div>
+        <div class="highlight">Governed KPI registry · reporting automation · dashboard lifecycle tracking</div>
+        <div class="highlight">CRM alignment workflows · Quarto reporting · dashboard governance</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Commercial Analytics</span>
+        <span class="tag">KPI Governance</span>
+        <span class="tag">CRM</span>
+        <span class="tag">Reporting</span>
+        <span class="tag">Quarto</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer" style="flex-wrap:wrap; gap:0.75rem;">
+        <a href="https://github.com/lnjiosseu/hc_analytics" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="https://njiosseu.shinyapps.io/hc_analytics-dashboard/" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Live Dashboard
+        </a>
+        <a href="https://lnjiosseu.github.io/hc_analytics-report.html" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Full Report
+        </a>
+      </div>
+    </div>
+
+    <!-- 03 FraudDetect -->
+
+    <div class="project-card" data-domain="risk">
+      <div class="card-meta">
+        <span class="card-domain">Risk Analytics</span>
+        <span class="card-index">03 / 07</span>
+      </div>
+      <div class="card-title">FraudDetect: Anomaly Detection & Risk Monitoring Analytics</div>
+      <div class="card-desc">Production-grade fraud detection system on 590K+ transactions — replicating financial services risk workflows. Ensemble ML (Random Forest + XGBoost) with SMOTE oversampling, Isolation Forest anomaly detection, Youden's J threshold optimization, and multi-dimensional risk tier segmentation across merchant, geography, and time.</div>
+      <div class="card-highlights">
+        <div class="highlight">Ensemble AUC-ROC = 0.94 across 590K+ transactions</div>
+        <div class="highlight">31% false-positive rate reduction vs. rule-based baseline</div>
+        <div class="highlight">Top fraud drivers: device mismatch, international transactions, night activity</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Fraud</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">Anomaly</span>
+        <span class="tag">SMOTE</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/frauddetect" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="https://lnjiosseu.shinyapps.io/frauddetect-dashboard/" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Live Dashboard
+        </a>
+        <a href="https://lnjiosseu.github.io/frauddetect-report.html" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Full Report
+        </a>
+      </div>
+    </div>
+
+    
+
+    <!-- 04 RetentionAnalytics -->
+
     <div class="project-card" data-domain="product">
       <div class="card-meta">
         <span class="card-domain">Product Analytics</span>
-        <span class="card-index">02 / 06</span>
+        <span class="card-index">04 / 07</span>
       </div>
       <div class="card-title">RetentionAnalytics: User Retention & Funnel Analytics</div>
       <div class="card-desc">End-to-end product analytics pipeline — built to mirror the work that drove an 18% lift in 90-day retention across 500K+ users at UX Analytic. Covers SQL funnel analysis, cohort retention modeling, DAU/MAU stickiness, power-user segmentation via logistic regression, and a full A/B experimentation framework with novelty-effect correction.</div>
@@ -687,85 +767,14 @@
       </div>
     </div>
 
-    <!-- 03 FraudDetect -->
-    <div class="project-card" data-domain="risk">
-      <div class="card-meta">
-        <span class="card-domain">Risk Analytics</span>
-        <span class="card-index">03 / 06</span>
-      </div>
-      <div class="card-title">FraudDetect: Financial Transaction Fraud Detection</div>
-      <div class="card-desc">Production-grade fraud detection system on 590K+ transactions — replicating financial services risk workflows. Ensemble ML (Random Forest + XGBoost) with SMOTE oversampling, Isolation Forest anomaly detection, Youden's J threshold optimization, and multi-dimensional risk tier segmentation across merchant, geography, and time.</div>
-      <div class="card-highlights">
-        <div class="highlight">Ensemble AUC-ROC = 0.94 across 590K+ transactions</div>
-        <div class="highlight">31% false-positive rate reduction vs. rule-based baseline</div>
-        <div class="highlight">Top fraud drivers: device mismatch, international transactions, night activity</div>
-      </div>
-      <div class="card-tags">
-        <span class="tag">Fraud</span>
-        <span class="tag">Random Forest</span>
-        <span class="tag">XGBoost</span>
-        <span class="tag">Anomaly</span>
-        <span class="tag">SMOTE</span>
-        <span class="tag">R / Shiny</span>
-      </div>
-      <div class="card-footer">
-        <a href="https://github.com/lnjiosseu/frauddetect" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
-        <a href="https://lnjiosseu.shinyapps.io/frauddetect-dashboard/" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Live Dashboard
-        </a>
-        <a href="https://lnjiosseu.github.io/frauddetect-report.html" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Full Report
-        </a>
-      </div>
-    </div>
-
-    <!-- 04 PubHealthEpi -->
-    <div class="project-card" data-domain="healthcare">
-      <div class="card-meta">
-        <span class="card-domain">Public Health</span>
-        <span class="card-index">04 / 06</span>
-      </div>
-      <div class="card-title">PubHealthEpi: Health Disparities, Survival Analysis & Causal Inference</div>
-      <div class="card-desc">Claims-based population health study on 8,000 patients and 21K+ claims evaluating community health worker interventions. Identifies key predictors of ED overutilization (uninsured OR=1.48, Medicaid OR=1.41), quantifies treatment effect on survival, and delivers policy recommendations for intervention targeting and health equity.</div>
-      <div class="card-highlights">
-        <div class="highlight">Cox HR = 0.706 (95% CI 0.666–0.748) · causal ATE ≈ −0.10 via AIPW</div>
-        <div class="highlight">Perfect covariate balance achieved · E-value = 1.52</div>
-        <div class="highlight">5-tab Shiny dashboard · actionable policy brief for health equity</div>
-      </div>
-      <div class="card-tags">
-        <span class="tag">Epidemiology</span>
-        <span class="tag">Cox PH</span>
-        <span class="tag">IPTW</span>
-        <span class="tag">AIPW</span>
-        <span class="tag">Disparities</span>
-        <span class="tag">R / Shiny</span>
-      </div>
-      <div class="card-footer">
-        <a href="https://github.com/lnjiosseu/pubhealth" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
-        <a href="https://lnjiosseu.shinyapps.io/pubhealth-dashboard/" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Live Dashboard
-        </a>
-        <a href="https://lnjiosseu.github.io/pubhealth-report.html" target="_blank" class="github-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Full Report
-        </a>
-      </div>
-    </div>
+    
 
     <!-- 05 StatEval -->
+
     <div class="project-card" data-domain="healthcare">
       <div class="card-meta">
         <span class="card-domain">LLM Evaluation</span>
-        <span class="card-index">05 / 06</span>
+        <span class="card-index">05 / 07</span>
       </div>
       <div class="card-title">StatEval: Rigorous LLM Evaluation Framework with Causal Inference</div>
       <div class="card-desc">Clinical trial-grade statistical evaluation framework for LLMs in healthcare — applying rubric development, rater calibration, and causal inference methods. AI grader calibrated against human annotations; causal effect of clinical context on user satisfaction estimated via doubly robust AIPW with Neyman optimal allocation across 15 strata.</div>
@@ -798,11 +807,54 @@
       </div>
     </div>
 
-    <!-- 06 TradeComps -->
+    
+
+    <!-- 06 PubHealthEpi -->
+
+    <div class="project-card" data-domain="healthcare">
+      <div class="card-meta">
+        <span class="card-domain">Public Health</span>
+        <span class="card-index">06 / 07</span>
+      </div>
+      <div class="card-title">PubHealthEpi: Health Disparities, Survival Analysis & Causal Inference</div>
+      <div class="card-desc">Claims-based population health study on 8,000 patients and 21K+ claims evaluating community health worker interventions. Identifies key predictors of ED overutilization (uninsured OR=1.48, Medicaid OR=1.41), quantifies treatment effect on survival, and delivers policy recommendations for intervention targeting and health equity.</div>
+      <div class="card-highlights">
+        <div class="highlight">Cox HR = 0.706 (95% CI 0.666–0.748) · causal ATE ≈ −0.10 via AIPW</div>
+        <div class="highlight">Perfect covariate balance achieved · E-value = 1.52</div>
+        <div class="highlight">5-tab Shiny dashboard · actionable policy brief for health equity</div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Epidemiology</span>
+        <span class="tag">Cox PH</span>
+        <span class="tag">IPTW</span>
+        <span class="tag">AIPW</span>
+        <span class="tag">Disparities</span>
+        <span class="tag">R / Shiny</span>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/lnjiosseu/pubhealth" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="https://lnjiosseu.shinyapps.io/pubhealth-dashboard/" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Live Dashboard
+        </a>
+        <a href="https://lnjiosseu.github.io/pubhealth-report.html" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Full Report
+        </a>
+      </div>
+    </div>
+
+    
+
+    <!-- 07 TradeComps -->
+
     <div class="project-card" data-domain="policy">
       <div class="card-meta">
         <span class="card-domain">Policy Economics</span>
-        <span class="card-index">06 / 06</span>
+        <span class="card-index">07 / 07</span>
       </div>
       <div class="card-title">TradeComps: Trade Competitiveness & Investment Attractiveness in Sub-Saharan Africa</div>
       <div class="card-desc">Policy-oriented analysis of export competitiveness and FDI dynamics across 12 Sub-Saharan African economies (2015–2023). Composite export index (RCA 40% + export CAGR 30% + diversification 30%), OLS regression on log FDI inflows, and investment attractiveness scoring across regulatory quality, infrastructure, and trade openness.</div>
@@ -835,7 +887,10 @@
       </div>
     </div>
 
+
+
   </div>
+</div>
 </section>
 
 <!-- ABOUT -->
