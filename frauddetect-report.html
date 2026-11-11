@@ -2301,17 +2301,17 @@ vertical-align: -.125em;
 <tr class="odd">
 <td><code>01_modeling.R</code></td>
 <td>Creates the stratified train/validation/test split, fits Random Forest and XGBoost, selects thresholds on validation data, and evaluates once on the held-out test set.</td>
-<td>Core. Run first.</td>
+<td>Core: Run first.</td>
 </tr>
 <tr class="even">
 <td><code>02_anomaly_detection.R</code></td>
 <td>Earlier standalone Isolation Forest anomaly-scoring analysis.</td>
-<td>Exploratory predecessor. Its output is not used for the final leakage-safe policy results.</td>
+<td>Exploratory predecessor: Its output is not used for the final leakage-safe policy results.</td>
 </tr>
 <tr class="odd">
 <td><code>03_anomaly_incremental_value.R</code></td>
 <td>Compares the earlier anomaly scores with XGBoost predictions to examine incremental alert value.</td>
-<td>Exploratory predecessor. Do not use its results as the final leakage-safe comparison.</td>
+<td>Exploratory predecessor: Do not use its results as the final leakage-safe comparison.</td>
 </tr>
 <tr class="even">
 <td><code>04_optimize_anomaly_thresholds.R</code></td>
