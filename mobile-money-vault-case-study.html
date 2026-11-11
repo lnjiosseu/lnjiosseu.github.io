@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile Money Vault Analytics | Ludovic Njiosseu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@400;500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0e0c;--paper:#f5f0e8;--accent:#c0392b;--muted:#71695f;--rule:#cec9bc;--card:#faf7f2}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 Lora,Georgia,serif}
+header,main,footer{padding-left:clamp(1.25rem,7vw,6rem);padding-right:clamp(1.25rem,7vw,6rem)}
+header{padding-top:1.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--ink);font:12px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+header a{color:var(--ink);text-decoration:none}
+main{max-width:1050px;margin:auto;padding-top:4rem;padding-bottom:5rem}
+.kicker{font:12px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.2}h1{font-size:clamp(2.3rem,5vw,4.4rem);max-width:850px;margin:.8rem 0 1rem}h2{font-size:2rem;margin-top:3rem}h3{font-size:1.25rem;margin-top:1.7rem}
+.lede{font-size:1.15rem;color:var(--muted);max-width:780px}
+.note{background:#eee7da;border-left:3px solid var(--accent);padding:1rem 1.25rem;margin:2rem 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2rem 0}
+.metric{background:var(--card);padding:1.2rem}.metric strong{display:block;font:700 1.6rem 'Playfair Display',serif}.metric span{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:1rem 0 2rem;background:var(--card);font-size:.92rem}th,td{text-align:left;padding:.8rem;border-bottom:1px solid var(--rule)}th{font:11px 'DM Mono',monospace;text-transform:uppercase;background:#eee7da}
+a{color:var(--accent)}.links{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.links a{font:12px 'DM Mono',monospace;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:3px;color:var(--ink)}
+ul,ol{padding-left:1.3rem}li{margin:.45rem 0}.small{font-size:.86rem;color:var(--muted)}
+footer{border-top:1px solid var(--rule);padding-top:1.5rem;padding-bottom:1.5rem;font:11px 'DM Mono',monospace;color:var(--muted)}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header><a href="https://lnjiosseu.github.io/">Ludovic Njiosseu · Portfolio</a></header>
+<main>
+<div class="kicker">Fintech Operations Analytics · Portfolio Case Study</div>
+<h1>Mobile Money Vault Analytics &amp; Support Cost Optimization</h1>
+<p class="lede">A data-driven exploration of vault-unlock demand, customer support channel economics, and staffing capacity using a synthetic mobile-money operations dataset.</p>
+<div class="note"><strong>Data transparency:</strong> This is an independently developed portfolio project using fully synthetic data. It does not use Wave data and does not represent the actual performance, costs, customers, or operations of Wave or any other company.</div>
+<div class="metrics">
+<div class="metric"><strong>85,639</strong><span>2025 vault unlocks</span></div>
+<div class="metric"><strong>20,452</strong><span>Support / IVR contacts</span></div>
+<div class="metric"><strong>$22,041</strong><span>Modeled contact cost</span></div>
+<div class="metric"><strong>3,236.8</strong><span>Handling hours</span></div>
+</div>
+<h2>1. Business problem</h2>
+<p>Mobile-money services depend on reliable customer access to funds and clear resolution paths when users encounter friction. Vault-related activity can vary by time and day. When customers need help, the support channel used may have different handling-time and cost implications. Understanding these patterns can inform operational questions about self-service, live-agent capacity, and service coverage.</p>
+<p>This project explores how an operator could use event-level operational data to describe demand, compare support-channel economics, and estimate staffing capacity under alternative utilization assumptions.</p>
+<h2>2. Data and methodology</h2>
+<p>The project uses synthetic customer, vault-cycle, unlock-event, and support-contact records. The event history spans January 1, 2024 through March 31, 2026 to support lifecycle construction and validation. The headline analysis covers calendar year 2025. The synthetic dataset contains 5,000 customers/vaults and 148,993 full-history cycles.</p>
+<ul>
+<li>Python and pandas for data preparation, validation, and analysis.</li>
+<li>Plotly for interactive charts and Streamlit for the four-page dashboard.</li>
+<li>Demand analysis by date, hour, and weekday.</li>
+<li>Channel comparison using contact counts, handling time, and assumed contact-cost inputs.</li>
+<li>Staffing capacity scenarios at 70%, 80%, and 85% target utilization.</li>
+</ul>
+<h2>3. Key findings</h2>
+<h3>Demand patterns</h3>
+<p>The 2025 synthetic reporting set contains 85,639 completed vault unlocks and 20,452 support/IVR contacts. The busiest support-contact hour was 20:00, with 1,889 contacts, followed by 19:00 (1,773) and 21:00 (1,611). Friday had the highest average daily contact volume (63.48), while Sunday had the lowest (52.42).</p>
+<h3>Channel economics</h3>
+<table><thead><tr><th>Channel</th><th>Contacts</th><th>Share of contacts</th><th>Avg. handling time</th><th>Modeled contact cost</th></tr></thead><tbody>
+<tr><td>IVR</td><td>10,330</td><td>50.5%</td><td>4.02 min</td><td>$1,987.25</td></tr>
+<tr><td>Live Support</td><td>10,122</td><td>49.5%</td><td>15.08 min</td><td>$20,053.72</td></tr>
+</tbody></table>
+<p>Under the project's synthetic cost assumptions, Live Support accounts for approximately 91% of estimated contact costs despite handling slightly fewer contacts. This makes live-support contact reasons and resolution pathways a priority for further investigation. The analysis does not identify which specific issues could safely be shifted to self-service.</p>
+<h3>Staffing scenarios</h3>
+<table><thead><tr><th>Target utilization</th><th>Estimated agent-hours</th><th>Modeled labor cost</th></tr></thead><tbody>
+<tr><td>70%</td><td>10,055</td><td>$80,440</td></tr>
+<tr><td>80%</td><td>9,387</td><td>$75,096</td></tr>
+<tr><td>85%</td><td>9,101</td><td>$72,808</td></tr>
+</tbody></table>
+<p>These are capacity estimates, not optimized schedules. The model does not include intraday shifts, queueing, wait times, abandonment, service-level attainment, breaks, shrinkage, or skill-based routing. Modeled labor cost is kept separate from channel contact cost because the assumptions do not establish whether these components overlap.</p>
+<h2>4. Business implications and recommendations</h2>
+<ol>
+<li><strong>Validate contact drivers.</strong> Link support contacts to issue categories, reason codes, resolution outcomes, and repeat-contact history.</li>
+<li><strong>Evaluate self-service opportunities.</strong> Identify high-volume, low-complexity issues that may be appropriate for IVR or digital self-service, then test changes while monitoring successful resolution, escalation, repeat contacts, and customer experience.</li>
+<li><strong>Strengthen workforce planning.</strong> Incorporate interval-level arrivals, handling-time distributions, shrinkage, service-level targets, abandonment, and occupancy constraints into a queueing or workforce-management model.</li>
+<li><strong>Balance cost and customer outcomes.</strong> Monitor successful resolution, repeat contacts, complaints, escalation, and satisfaction alongside cost.</li>
+</ol>
+<h2>5. Limitations</h2>
+<ul>
+<li>All data and metrics are synthetic and illustrative.</li>
+<li>Channel cost estimates depend on assumed rates, not observed company costs.</li>
+<li>Descriptive patterns in generated data do not establish causality or real customer behavior.</li>
+<li>Staffing scenarios are simplified capacity estimates and do not establish service levels or actual schedules.</li>
+<li>Results should not be interpreted as actual Wave operating metrics or guaranteed savings.</li>
+</ul>
+<h2>6. Conclusion</h2>
+<p>This project demonstrates an end-to-end analytical workflow for a fintech-style operations problem: constructing and validating event-level data, measuring demand, comparing support-channel economics, translating assumptions into staffing scenarios, and communicating results through an interactive application. The central business hypothesis is that understanding live-agent contact reasons and resolution pathways may help prioritize operational experiments. Testing that hypothesis would require real contact-level data and customer-outcome measures.</p>
+<div class="links">
+<a href="https://mobile-money-vault-analytics.streamlit.app" target="_blank" rel="noopener">Open Live Dashboard ↗</a>
+<a href="https://github.com/lnjiosseu/mobile-money-vault-analytics" target="_blank" rel="noopener">View Source Code ↗</a>
+<a href="https://lnjiosseu.github.io/" target="_blank">Back to Portfolio ↗</a>
+</div>
+<p class="small">Prepared by Ludovic Njiosseu · MPH (Biostatistics), New York University · Python, pandas, Plotly, Streamlit. Portfolio project for educational and demonstration purposes only.</p>
+</main>
+<footer>© 2026 Ludovic Njiosseu · Synthetic data only</footer>
+</body>
+</html>
