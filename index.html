@@ -651,11 +651,11 @@
         <span class="card-index">02 / 08</span>
       </div>
       <div class="card-title">FraudDetect: Financial Transaction Fraud Detection & Risk Analytics</div>
-      <div class="card-desc">A fraud detection and risk analytics workflow built on 10,000 simulated financial transactions. The project engineers transaction-level risk features, addresses class imbalance through minority-class oversampling, compares logistic regression with a bagged decision-stump ensemble, and evaluates threshold-based alert decisions against a simple amount rule.</div>
+      <div class="card-desc">A fraud detection workflow on 10,000 simulated transactions. The corrected pipeline compares Random Forest, XGBoost, and an equal-weight blend on a held-out test set, then evaluates Isolation Forest alert policies and illustrative investigation-cost scenarios.</div>
       <div class="card-highlights">
         <div class="highlight">10,000 simulated transactions · risk features across merchant, geography, and time</div>
-        <div class="highlight">Logistic regression and bagged decision-stump ensemble · 80/20 train-test split</div>
-        <div class="highlight">Youden's J threshold selection · confusion-matrix and false-positive-rate comparison against a $500 amount rule</div>
+        <div class="highlight">Random Forest, XGBoost, and equal-weight blend · stratified 60/20/20 train-validation-test split</div>
+        <div class="highlight">XGBoost test ROC-AUC 0.752 and PR-AUC 0.211 · 491 alerts, 79 true positives, 412 false positives</div>
       </div>
       <div class="card-tags">
         <span class="tag">Fraud Detection</span>
@@ -694,8 +694,8 @@
       <div class="card-desc">An end-to-end product analytics project built on 5,000 synthetic users across 12 signup cohorts. The workflow examines the signup-to-conversion funnel, cohort-based retention, DAU/MAU engagement, and month-6 retention prediction using logistic regression. It also demonstrates A/B test design, power analysis, and a simulated onboarding experiment with a novelty-effect check in an interactive R/Shiny dashboard.</div>
       <div class="card-highlights">
         <div class="highlight">5,000 synthetic users across 12 monthly signup cohorts</div>
-        <div class="highlight">Funnel analysis highlights onboarding-to-activation as a key drop-off stage</div>
-        <div class="highlight">Month-6 cohort retention · DAU/MAU engagement · logistic-regression prediction</div>
+        <div class="highlight">Original saved baseline: 5,000 users, 34,542 sessions, 12.62% conversion, 31.96% M6 retention</div>
+        <div class="highlight">Original baseline retention-model ROC-AUC 0.5946. Later Nov. 9 report metrics are documented separately and are not yet reproducible from committed pipeline code</div>
       </div>
       <div class="card-tags">
         <span class="tag">Retention</span>
